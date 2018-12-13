@@ -1,0 +1,8 @@
+{
+  "name": "salabot-example",
+  "description": "Example for using salabot - the node.js discord bot framework",
+  "version": "1.0.0",
+  "dependencies": {
+    "dotenv": "^6.1.0"
+  }
+}

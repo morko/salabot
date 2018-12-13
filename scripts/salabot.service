@@ -1,0 +1,20 @@
+[Unit]
+Description=salabot - Discord App bot
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
+
+[Service]
+Type=simple
+PIDFile=/var/run/salabot.pid
+ExecStart=/bin/bash /home/oskari/services/salabot/salabot
+TimeoutSec=30
+Restart=on-failure
+RestartSec=30
+StartLimitInterval=350
+StartLimitBurst=10
+User=oskari
+Group=oskari
+
+[Install]
+WantedBy=multi-user.target
