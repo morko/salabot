@@ -46,7 +46,7 @@ module.exports = class Salabot {
    */
   async add(plugin) {
     if (!this.initialized) {
-      throw new Error('Missing required argument: plugin');
+      throw new Error('You must call init() before adding plugins!');
     }
     try {
       await this.plugins.loadPlugin(plugin);
@@ -60,7 +60,7 @@ module.exports = class Salabot {
    */
   async addModule(plugin) {
     if (!this.initialized) {
-      throw new Error('Missing required argument: plugin');
+      throw new Error('You must call init() before adding plugins!');
     }
     try {
       await this.plugins.loadPluginModule(plugin);
