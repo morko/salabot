@@ -33,20 +33,19 @@ const logger = createLogger({
   format: alignedWithColorsAndTime,
 });
 
+let transportOptions;
 let environment = process.env.NODE_ENV || '';
 switch(environment) {
   case 'development':
-    logger.add(new transports.Console({
-      level: 'debug'
-    }));
+    transportOptions = {level: 'debug'};
     break;
   case 'test':
-    return;
+    transportOptions = {silent: true};
+    break;
   default:
-    logger.add(new transports.Console({
-      level: 'info'
-    }));
+    transportOptions = {level: 'info'};
     break;
 }
+logger.add(new transports.Console(transportOptions));
 
 module.exports = logger;
