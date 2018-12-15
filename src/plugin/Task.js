@@ -13,7 +13,6 @@ module.exports = class Task extends Command {
       throw new Error('Invalid cron syntax: '+ options.cron);
     }
     this.cron = options.cron;
-    this.runWhenStarted = options.runWhenStarted || false;
     this.args = ['start|stop'];
     this.allowDM = false;
 
