@@ -41,8 +41,8 @@ customize the configuration.
 **Replace "Your Discord ID" and "Your Discord bot token"**
 
 ```js
-const Salabot = require('salabot');
-let bot = new Salabot({master: "Your Discord ID"});
+const { Bot } = require('salabot');
+let bot = new Bot({master: "Your Discord ID"});
 bot.init().then(() => bot.start("Your Discord bot token"));
 ```
 

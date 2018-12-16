@@ -1,6 +1,6 @@
 require('dotenv').config()
 const path = require('path');
-const Salabot = require('../');
+const { Bot } = require('../');
 const pluginExamples = require('./plugin-examples');
 
 (async function bootstrap() {
@@ -18,7 +18,7 @@ const pluginExamples = require('./plugin-examples');
     }
   }
 
-  let bot = new Salabot(config);
+  let bot = new Bot(config);
   // Set the BOT_TOKEN environment variable to your bot token.
   try {
     await bot.init();

@@ -1,3 +1,5 @@
-const Salabot = require('./src/Salabot');
+const Bot = require('./src/Bot');
 
-module.exports = Salabot;
+module.exports = {
+  Bot: Bot
+}
