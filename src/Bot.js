@@ -7,7 +7,7 @@ const PermissionManager = require('./PermissionManager');
 const Prefix = require('./Prefix');
 const Discord = require('discord.js');
 
-module.exports = class Salabot {
+module.exports = class Bot {
   constructor(config) {
     this.config = this._parseConfig(config);
     /** Winston logger. */
