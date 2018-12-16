@@ -35,7 +35,7 @@ module.exports = class Bot {
       throw new Error('You must call init() before starting the bot!');
     }
     try {
-      await this.client.login(token);
+      return await this.client.login(token);
     } catch(err) {
       this.log.error('Starting the bot failed: ' + err.stack);
       throw err;
