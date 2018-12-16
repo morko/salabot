@@ -38,7 +38,7 @@ module.exports = class Salabot {
       await this.client.login(token);
     } catch(err) {
       this.log.error('Starting the bot failed: ' + err.stack);
-      process.exit(1);
+      throw err;
     }
   }
   /**
@@ -51,7 +51,7 @@ module.exports = class Salabot {
     try {
       await this.plugins.loadPlugin(plugin);
     } catch(err) {
-      this.log.error('Could not load ' + plugin + ': ' + err.stack);
+      this.log.error('Could not load plugin: ' + err.stack);
       throw err;
     }
   }
@@ -65,7 +65,7 @@ module.exports = class Salabot {
     try {
       await this.plugins.loadPluginModule(plugin);
     } catch(err) {
-      this.log.error('Could not load ' + plugin + ': ' + err.stack);
+      this.log.error('Could not load plugin module: ' + err.stack);
       throw err;
     }
   }
@@ -117,7 +117,7 @@ module.exports = class Salabot {
       this.initialized = true;
     } catch(err) {
       this.log.error('Bot initialization failed: ' + err.stack);
-      process.exit(1);
+      throw err;
     }
   }
 
@@ -216,8 +216,8 @@ module.exports = class Salabot {
       this.log.info('Connected as: ' + this.client.user.tag);
 
     } catch(err) {
-      this.log.error(err.stack);
-      process.exit(1);
+      this.log.error('_onReady initialization failed: ' + err.stack);
+      throw err;
     }
   }
   
@@ -280,7 +280,7 @@ module.exports = class Salabot {
             + executionTime + 'ms');
       }
     } catch(err) {
-      this.log.error('Execute ' + command.name + ': ' + err.stack);
+      this.log.error('Execution error: ' + command.name + ': ' + err.stack);
     }
 
   }

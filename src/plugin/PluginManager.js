@@ -64,13 +64,8 @@ module.exports = class PluginManager {
    * @param {object} pluginModule - module that contains multiple plugins
    */
   async loadPluginModule(pluginModule) {
-
     for (let i in pluginModule) {
-      try {
-        await this.loadPlugin(pluginModule[i]);
-      } catch(err) {
-        this.log.error('Plugin ' + pluginModule[i].name + ': ' + err.stack);
-      }
+      await this.loadPlugin(pluginModule[i]);
     }
   }
 
