@@ -80,7 +80,7 @@ module.exports = class Command extends Plugin {
       return new Date().getTime() - execTime;
     } catch(err) {
       bot.log.error(err.stack);
-      msg.reply('Uhhuh... Something went wrong.');
+      msg.reply('Uhhuh... You are screwed. I hope you have a screwdriver.');
       return null;
     }
   }

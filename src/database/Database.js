@@ -48,14 +48,9 @@ module.exports = class Database {
    * Synchronizes the database tables.
    */
   async init() {
-    try {
-      let sync = await this.sequelize.sync();
-      this.initialized = true;
-      return sync;
-    } catch(err) {
-      this.log.error(err);
-      throw err;
-    }
+    let sync = await this.sequelize.sync();
+    this.initialized = true;
+    return sync;
   }
 
   /**

@@ -10,8 +10,8 @@
   "author": "Oskari Pöntinen <mail.morko@gmail.com> (https://github.com/morko)",
   "license": "Apache-2.0",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/morko/salabot.git"
+    "type": "git",
+    "url": "https://github.com/morko/salabot.git"
   },
   "dependencies": {
     "bottleneck": "^2.13.0",

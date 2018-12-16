@@ -37,7 +37,7 @@ module.exports = class Task extends Command {
       return new Date().getTime() - execTime;
     } catch(err) {
       bot.log.error(err.stack);
-      msg.reply('Hmm... ' + err.message);
+      msg.reply('There is a problem with your internet connection, please search our website for solution.');
       return null;
     }
   }
@@ -127,7 +127,7 @@ module.exports = class Task extends Command {
       try {
         await channel.send(result);
       } catch(err) {
-        bot.log.error('Task ' + this.name + ': ' + err.stack);
+        bot.log.error('Failed to send task results (' + this.name + ') for guild ' + guildId + ': ' + err.stack);
         this._removeSubscription(guildId);
       }
     }
