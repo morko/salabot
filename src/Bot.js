@@ -27,6 +27,7 @@ module.exports = class Bot {
     /** Tells if init() has been run? */
     this.initialized = false;
   }
+
   /**
    * Connects the bot to discord.
    */
@@ -34,13 +35,41 @@ module.exports = class Bot {
     if (!this.initialized) {
       throw new Error('You must call init() before starting the bot!');
     }
-    try {
-      return await this.client.login(token);
-    } catch(err) {
-      this.log.error('Starting the bot failed: ' + err.stack);
-      throw err;
-    }
+ 
+    return new Promise((resolve, reject) => {
+      this.client.on('ready', async () => {
+        try {
+          // ensure that the database matches reality
+          if (this.database) {
+            await this.database.ensureIntegrity();
+          }
+ 
+          // start all tasks
+          let p = [];
+          for (let task of this.plugins.tasks.values()) {
+            p.push(task.start(this));
+          }
+          await Promise.all(p);
+ 
+          // sets the presence status for each guild with right prefix
+          await this.prefix.init();
+ 
+          this.log.info('Connected as: ' + this.client.user.tag);
+          return resolve(token);
+ 
+        } catch(err) {
+          this.log.error('onReady failed: ' + err.stack);
+          return reject(err);
+        }
+      });
+ 
+      this.client.login(token).catch(err => {
+        this.log.error('Starting the bot failed: ' + err.stack);
+        return reject(err);
+      });
+    });
   }
+
   /**
    * Adds a plugin to the bot.
    */
