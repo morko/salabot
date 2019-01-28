@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const path = require('path');
 const { Bot } = require('../');
 const pluginExamples = require('./plugin-examples');
