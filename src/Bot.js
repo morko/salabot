@@ -113,8 +113,8 @@ module.exports = class Bot {
       });
       await this.database.init();
     } catch(err) {
-      this.log.warn('Database not initialized. ' + err.stack);
-      this.database = null;
+      this.log.error('Database not initialized. ' + err.stack);
+      process.exit(1);
     }
 
     try {
