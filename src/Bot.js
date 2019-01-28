@@ -159,13 +159,13 @@ module.exports = class Bot {
    */
   _parseConfig(conf) {
     if (!conf.master) {
-      throw new Error('Missing required argument: config.master')
+      throw new Error('Missing required argument: config.master');
     }
 
     if (conf.database) {
       conf.database.dialect = conf.database.dialect || 'sqlite';
       if (conf.database.dialect === 'sqlite' && !conf.database.storage) {
-        throw new Error('Missing required argument: config.database.storage')
+        throw new Error('Missing required argument: config.database.storage');
       }
       conf.database.username = conf.database.username || 'username';
       conf.database.password = conf.database.password || 'password';
