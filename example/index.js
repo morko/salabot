@@ -18,9 +18,9 @@ const pluginExamples = require('./plugin-examples');
     }
   }
 
-  let bot = new Bot(config);
   // Set the BOT_TOKEN environment variable to your bot token.
   try {
+    let bot = new Bot(config);
     await bot.init();
     await bot.addModule(pluginExamples);
     await bot.start(process.env.BOT_TOKEN);
