@@ -7,10 +7,16 @@ module.exports = class Task extends Command {
 
     options = options || {};
     if (!options.cron) {
-      throw new Error('Missing required argument: options.cron');
+      throw new Error(
+        'Plugin ' + options.name + 
+        ' missing required argument: options.cron'
+      );
     }
     if (!cron.validate(options.cron)) {
-      throw new Error('Invalid cron syntax: '+ options.cron);
+      throw new Error(
+        'Plugin ' + options.name +
+        ' has invalid cron syntax: '+ options.cron
+      );
     }
     this.cron = options.cron;
     this.args = ['start|stop'];

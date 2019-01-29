@@ -42,10 +42,15 @@ module.exports = class Command extends Plugin {
       throw new Error('Missing required argument: options.name');
     }
     if (!options.description) {
-      throw new Error('Missing required argument: options.description');
+      throw new Error(
+        'Plugin ' + options.name + 
+        ' missing required argument: options.description'
+      );
     }
     if (!options.run) {
-      throw new Error('Missing required argument: options.run');
+      throw new Error(
+        'Plugin ' + options.name + ' missing required argument: options.run'
+      );
     }
     this.name = options.name;
     this.description = options.description;

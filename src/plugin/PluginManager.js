@@ -88,19 +88,25 @@ module.exports = class PluginManager {
     let plugin;
     let type = pluginDefinition.type;
 
-    if (type === 'command') {
-      await this.loadCommand(new Command(args));
-
-    } else if (type === 'task') {
-      await this.loadCommand(new Task(args));
-
-    } else if (type === 'filter') {
-      await this.loadFilter(new Filter(args));
-
-    } else {
-      throw new Error('Type "' + type + '" not supported.')
+    try {
+      if (type === 'command') {
+        await this.loadCommand(new Command(args));
+  
+      } else if (type === 'task') {
+        await this.loadCommand(new Task(args));
+  
+      } else if (type === 'filter') {
+        await this.loadFilter(new Filter(args));
+  
+      } else {
+        throw new Error('Type "' + type + '" not supported.')
+      }
+    } catch (err) {
+      throw new Error(
+        'Could create a plugin instance from ' +
+        JSON.stringify(pluginDefinition) + '\n' + err
+      );
     }
-
   }
 
   /**
