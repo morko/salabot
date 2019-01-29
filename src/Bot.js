@@ -238,7 +238,7 @@ module.exports = class Bot {
    * @param {Message} msg discord.js Message
    */
   async _onMessage(msg) {
-    this._runHook('preParse', msg);
+    await this._runHook('preParse', msg);
 
     // parse the message
     let parser;
