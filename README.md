@@ -92,3 +92,21 @@ Explanation coming later...
 #### Filters
 
 Explanation coming later...
+
+## Running tests
+
+To be able to run the tests you need to have the **devDependencies** installed with `npm install`. Also the following environment variables are required:
+
+  - BOT_TOKEN
+    - Your Discord applications bot token
+  - NODE_ENV
+    - This should be set to *testing*
+
+To set the variables you can create an *.env* file to project root containing following:
+
+  ```
+  BOT_TOKEN=[YOUR_BOT_TOKEN]
+  NODE_ENV=testing
+  ```
+
+To execute the tests use `npm test` in project root.
